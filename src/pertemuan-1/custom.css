@@ -1,0 +1,211 @@
+/* Styling untuk keseluruhan halaman - Tema Game 90an */
+body {
+    font-family: 'Courier New', 'VT323', monospace;
+    background-color: #000080; /* Navy blue khas game lama */
+    color: #00ff00; /* Hijau neon khas monitor CRT */
+    margin: 0;
+    padding: 20px;
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, rgba(0, 255, 0, 0.1) 2px, transparent 2px, transparent 6px),
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 0, 0.1) 0%, transparent 50%);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><polygon points="2,2 14,8 2,14" fill="lime" stroke="black" stroke-width="1"/></svg>') 4 4, auto;
+}
+
+/* Container utama - Dengan efek pixel border */
+.card {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #000000;
+    padding: 20px;
+    border: 4px solid #ff00ff; /* Magenta neon */
+    box-shadow: 8px 8px 0px #00ffff; /* Cyan neon shadow */
+    position: relative;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Efek scanline untuk kesan CRT */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.05) 0px,
+        rgba(0, 255, 0, 0.05) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Header utama - Gaya arcade */
+h1 {
+    color: #ffff00; /* Kuning cerah */
+    text-align: center;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 24px;
+    text-shadow: 4px 4px 0px #ff0000;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: blink 2s step-start infinite;
+    background: linear-gradient(45deg, #ffff00, #ff8800);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+/* Fallback untuk browser yang tidak support background-clip */
+@supports not (background-clip: text) {
+    h1 {
+        color: #ffff00;
+        text-shadow: 4px 4px 0px #ff0000;
+    }
+}
+
+/* Paragraf - Gaya pixel */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+    background: #001100;
+    padding: 10px;
+    border-left: 4px solid #00ff00;
+    margin: 15px 0;
+    color: #00ff00;
+}
+
+/* Garis pemisah - Gaya pixel art */
+hr {
+    border: none;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff00ff,
+        #ff00ff 10px,
+        #00ffff 10px,
+        #00ffff 20px
+    );
+    margin: 20px 0;
+    image-rendering: pixelated;
+}
+
+/* Greeting - Gaya game over / score */
+small {
+    display: block;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    color: #ff00ff;
+    margin-top: 20px;
+    font-size: 12px;
+    background: #000000;
+    padding: 8px;
+    border: 2px solid #ff00ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Efek blink untuk elemen tertentu */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.5;
+    }
+}
+
+/* Efek hover untuk card - Seperti memilih menu game */
+.card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 10px 10px 0px #00ffff;
+    transition: all 0.1s ease;
+}
+
+/* Efek teks berkedip untuk link atau interaksi */
+a, button {
+    color: #ffff00;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    background: #000000;
+    padding: 5px 10px;
+    border: 2px solid #ff00ff;
+    display: inline-block;
+    margin: 5px;
+}
+
+a:hover, button:hover {
+    background: #ff00ff;
+    color: #000000;
+    border-color: #ffff00;
+    cursor: pointer;
+    animation: blink 0.5s step-start infinite;
+}
+
+/* Styling untuk elemen form - Gaya input game */
+input, select, textarea {
+    background: #000000;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ff00ff;
+    box-shadow: 0 0 5px #ff00ff;
+}
+
+/* Efek pixel corner untuk card */
+.card::after {
+    content: "■ ■ ■";
+    position: absolute;
+    bottom: -15px;
+    right: 10px;
+    color: #ff00ff;
+    font-size: 10px;
+    background: #000000;
+    padding: 2px 5px;
+    font-family: monospace;
+}
+
+/* Loading bar style - Khas game loading 90an */
+.loading-bar {
+    width: 100%;
+    height: 20px;
+    background: #000000;
+    border: 2px solid #00ff00;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-bar::before {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #00ff00,
+        #00ff00 10px,
+        #ffff00 10px,
+        #ffff00 20px
+    );
+    animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -30%;
+    }
+    100% {
+        left: 100%;
+    }
+}
